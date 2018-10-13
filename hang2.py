@@ -1,3 +1,8 @@
+import time
+import sys									#usado para gerar a palavra aleatória
+import random
+import os
+
 def m_a():
 	text = str(input('\nWrite the code, or write "b" to go back\n'))
 	if text == "b": default()
@@ -157,9 +162,6 @@ def game():
 	if chances == 0: print("\n\nOh no, you lose...", "\nWord:", word)	#se as chances acabarem e sair do loop, mensagem de fim
 	return()
 
-import time
-import sys									#usado para gerar a palavra aleatória
-import random
-import os
-clear = lambda: os.system('cls')			#usado para limpar o cmd
-menu()	
+if __name__ == "__main__":
+	clear = lambda: os.system('cls')			#usado para limpar o cmd
+	menu()	
