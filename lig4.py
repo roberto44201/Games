@@ -74,7 +74,7 @@ def ending(sentence):
 					
 				if event.key == K_RETURN:
 					if places == pos1: pygame.quit()
-					else: game()
+					else: main()
 
 
 def winning_move(board, piece):
@@ -179,6 +179,10 @@ def main():
 				if winning_move(board, piece):
 					sentence = "Player " + str(piece) + " Wins!"
 					ending(sentence)
+					
+				if turn == ROWS * COLUMNS:
+					sentence = "Tie!"
+					ending(sentence)	
 
 			if event.type == QUIT: pygame.quit()		
 
