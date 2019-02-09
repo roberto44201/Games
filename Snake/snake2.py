@@ -1,5 +1,16 @@
-import pygame, random, os, time, sys
+import pygame
+import random
+import os
+import time
+import sys
 from pygame.locals import *
+
+from sys import path
+from os.path import dirname as dir
+path.append(dir(path[0]))
+
+from Games.Game_Module import Game
+
 
 WIDTH = 600
 HEIGHT = 600
@@ -96,19 +107,14 @@ class Snake():
 
 
 # --------------------------------------------------------------------------------
-class Game():
-
-    KEY_DICTIONARY = {K_UP: UP, K_DOWN: DOWN, K_LEFT: LEFT,
-                      K_RIGHT: RIGHT, K_SPACE: SPACE, K_ESCAPE: MOUSE_QUIT}
+class Snake_Game(Game):
 
     def __init__(self):
-        os.environ['SDL_VIDEO_CENTERED'] = '1'
 
-        pygame.init()
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        KEY_TO_EVENTS = {K_UP: UP, K_DOWN: DOWN, K_LEFT: LEFT,
+                         K_RIGHT: RIGHT, K_SPACE: SPACE, K_ESCAPE: MOUSE_QUIT}
 
-        pygame.display.set_caption('Snake Game')
-        self.clock = pygame.time.Clock()
+        Game.__init__(self, 'Snake Game', WIDTH, HEIGHT, KEY_TO_EVENTS)
 
         self.my_snake = Snake()
         self.my_apple = Apple()
@@ -174,8 +180,8 @@ class Game():
                 return MOUSE_QUIT
 
             if event.type == KEYDOWN:
-                if event.key in Game.KEY_DICTIONARY:
-                    return Game.KEY_DICTIONARY[event.key]
+                if event.key in Game.KEY_TO_EVENTS:
+                    return Game.KEY_TO_EVENTS[event.key]
 
 
     def run(self):
@@ -201,5 +207,5 @@ class Game():
 
 
 # --------------------------------------------------------------------------------
-game = Game()
+game = Snake_Game()
 game.run()
