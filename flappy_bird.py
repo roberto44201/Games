@@ -3,7 +3,6 @@ from pygame.locals import *
 import sys
 import random
 import time
-import winsound
 
 from sys import path
 from os.path import dirname as dir
@@ -321,9 +320,7 @@ class Flappy_Bird(Game):
 
 
 	def main_loop(self): #main loop
-		
 		self.menu()
-
 		self.my_obstacles.set_rects()
 
 		while True:
